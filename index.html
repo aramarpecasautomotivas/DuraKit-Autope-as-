@@ -1,0 +1,294 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuraKit | Fabricação de Peças Automotivas</title>
+    <meta name="description" content="DuraKit - Há 19 anos fabricando peças e acessórios de alta qualidade para veículos automotores. Localizada em Osasco - SP.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#002B4A',    // Azul Escuro (Fundo e Textos Escuros)
+                            primary: '#7BBE16', // Verde do Logo (Destaques e Botões)
+                            secondary: '#00609C', // Azul do Logo
+                            hover: '#68a112',   // Verde Hover
+                            light: '#f8fafc'    // Slate 50
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        .hero-pattern {
+            background-color: #002B4A;
+            background-image: radial-gradient(#00609C 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand-primary selection:text-white">
+
+    <header class="fixed w-full top-0 z-50 glass-panel shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#inicio" aria-label="DuraKit Início" class="flex items-center gap-2 group">
+                        <svg class="h-14 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 450 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Green 'D' Symbol Background -->
+                            <path d="M 50 10 H 240 C 355 10 395 85 395 180 C 395 275 355 350 240 350 H 50 V 10 Z" fill="#7BBE16" />
+                            <!-- Blue Car Top View Silhouette -->
+                            <path d="M 50 115 H 200 C 205 115 210 95 210 95 L 222 95 C 222 95 227 115 235 115 C 275 115 310 135 310 180 C 310 225 275 245 235 245 C 227 245 222 265 222 265 L 210 265 C 210 265 205 245 200 245 H 50 V 115 Z" fill="#00609C" />
+                            <!-- Green Windshield Cutout -->
+                            <path d="M 195 135 C 215 135 240 145 240 180 C 240 215 215 225 195 225 C 210 205 210 155 195 135 Z" fill="#7BBE16" />
+                            <!-- Headlights -->
+                            <ellipse cx="280" cy="142" rx="14" ry="7" transform="rotate(-20 280 142)" fill="#7BBE16" />
+                            <ellipse cx="280" cy="218" rx="14" ry="7" transform="rotate(20 280 218)" fill="#7BBE16" />
+                            <!-- Side Accents -->
+                            <rect x="50" y="100" width="140" height="8" fill="#7BBE16" />
+                            <rect x="50" y="252" width="140" height="8" fill="#7BBE16" />
+                            <!-- Text DURAKIT -->
+                            <text x="222" y="408" text-anchor="middle" font-family="Inter, 'Arial Black', sans-serif" font-weight="900" font-size="56" fill="#00609C" letter-spacing="3">DURAKIT</text>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-slate-600 hover:text-brand-primary font-semibold transition-colors">Início</a>
+                    <a href="#sobre" class="text-slate-600 hover:text-brand-primary font-semibold transition-colors">Sobre Nós</a>
+                    <a href="#produtos" class="text-slate-600 hover:text-brand-primary font-semibold transition-colors">Produtos</a>
+                    <a href="#contato" class="text-slate-600 hover:text-brand-primary font-semibold transition-colors">Contato</a>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex">
+                    <a href="https://wa.me/5511980564160?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20DuraKit." target="_blank" rel="noopener noreferrer" class="bg-[#25D366] hover:bg-[#20b858] text-white px-6 py-2.5 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="ph-fill ph-whatsapp-logo text-xl"></i> Fale Conosco
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-primary focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-50 mobile-link">Início</a>
+                <a href="#sobre" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-50 mobile-link">Sobre Nós</a>
+                <a href="#produtos" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-50 mobile-link">Produtos</a>
+                <a href="#contato" class="block px-3 py-3 rounded-md text-base font-medium text-brand-primary font-bold hover:bg-slate-50 mobile-link">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="pt-28 pb-20 md:pt-40 md:pb-32 hero-pattern relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/90 to-brand-dark/40 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 border border-brand-primary/30 text-brand-primary text-sm font-semibold mb-6">
+                        <i class="ph-fill ph-star"></i> 19 Anos de Tradição e Qualidade
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Excelência em <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">Peças Automotivas</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        A DuraKit fabrica peças e acessórios robustos para veículos automotores. Confiança e precisão direto da indústria para o seu negócio.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#produtos" class="bg-brand-primary hover:bg-brand-hover text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-brand-primary/40 flex items-center justify-center gap-2">
+                            Conheça Nossos Produtos <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                        <a href="#contato" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Decorative Graphic -->
+                <div class="hidden lg:block relative">
+                    <div class="absolute inset-0 bg-brand-primary blur-[100px] opacity-20 rounded-full"></div>
+                    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=800" alt="Motor Automotivo" class="rounded-2xl shadow-2xl relative z-10 border border-white/10 object-cover h-[500px] w-full" onerror="this.src='https://placehold.co/800x500/002B4A/7BBE16?text=Auto+Parts'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-slate-100">
+                <div class="p-4">
+                    <i class="ph ph-calendar-check text-4xl text-brand-primary mb-2"></i>
+                    <p class="text-3xl font-extrabold text-brand-dark">2007</p>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">Ano de Fundação</p>
+                </div>
+                <div class="p-4">
+                    <i class="ph ph-wrench text-4xl text-brand-primary mb-2"></i>
+                    <p class="text-3xl font-extrabold text-brand-dark">19</p>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">Anos de Mercado</p>
+                </div>
+                <div class="p-4">
+                    <i class="ph ph-factory text-4xl text-brand-primary mb-2"></i>
+                    <p class="text-3xl font-extrabold text-brand-dark">100%</p>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">Fabricação Própria</p>
+                </div>
+                <div class="p-4">
+                    <i class="ph ph-map-pin text-4xl text-brand-primary mb-2"></i>
+                    <p class="text-3xl font-extrabold text-brand-dark">Osasco</p>
+                    <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">Sede em SP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="sobre" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-primary/10 rounded-tl-3xl -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-slate-200 rounded-br-3xl -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Fábrica DuraKit" class="rounded-2xl shadow-xl border-4 border-white w-full object-cover h-[450px]" onerror="this.src='https://placehold.co/800x600/e2e8f0/0f172a?text=Fabrica+DuraKit'">
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-brand-primary font-bold tracking-wide uppercase text-sm mb-2">Quem Somos</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6">Tradição e Segurança que Movem o seu Negócio</h3>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                        A <strong>DuraKit</strong> atua no mercado desde 2007. Com vasta experiência, consolidamos nossa marca através da fabricação de peças e acessórios duráveis para veículos automotores.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Nossa missão é fornecer soluções industriais com rigoroso controle de qualidade, garantindo a segurança e o desempenho que o setor automotivo exige. Localizados estrategicamente em Osasco, São Paulo, atendemos demandas diversas com agilidade e compromisso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="py-20 bg-brand-dark relative">
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-primary/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-primary font-bold tracking-wide uppercase text-sm mb-2">Nosso Portfólio</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Fabricação de Peças e Acessórios</h3>
+                <p class="text-slate-400 text-lg">
+                    Desenvolvemos componentes sob medida e linhas de montagem padronizadas para veículos automotores, focando em resistência e precisão técnica.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-brand-primary transition-colors group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors">
+                        <i class="ph ph-nut text-3xl text-brand-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Kits de Reparo</h4>
+                    <p class="text-slate-400 mb-6 line-clamp-3">
+                        Fabricação de kits completos para manutenção preventiva e corretiva, com tolerâncias precisas e materiais de alta durabilidade.
+                    </p>
+                    <a href="#contato" class="text-brand-primary font-semibold hover:text-white transition-colors inline-flex items-center gap-1">
+                        Saber mais <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-brand-primary transition-colors group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Destaque</div>
+                    <div class="w-14 h-14 bg-slate-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors">
+                        <i class="ph ph-car-profile text-3xl text-brand-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Acessórios Automotores</h4>
+                    <p class="text-slate-400 mb-6 line-clamp-3">
+                        Componentes e acessórios variados para melhoria de performance e estética de veículos automotores, linha leve e pesada.
+                    </p>
+                    <a href="#contato" class="text-brand-primary font-semibold hover:text-white transition-colors inline-flex items-center gap-1">
+                        Saber mais <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-brand-primary transition-colors group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors">
+                        <i class="ph ph-engine text-3xl text-brand-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Peças Específicas</h4>
+                    <p class="text-slate-400 mb-6 line-clamp-3">
+                        Usinagem e produção de peças não especificadas (CNAE 2949-2/99), adaptadas às necessidades exclusivas de montadoras e distribuidores.
+                    </p>
+                    <a href="#contato" class="text-brand-primary font-semibold hover:text-white transition-colors inline-flex items-center gap-1">
+                        Saber mais <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-slate-400 text-sm">Precisa de uma peça específica não listada? <a href="#contato" class="text-brand-primary hover:underline">Fale com nossos engenheiros.</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-brand-primary font-bold tracking-wide uppercase text-sm mb-2">Fale Conosco</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6">Entre em contato com a DuraKit</h3>
+                    <p class="text-slate-600 mb-10 text-lg">
+                        Estamos prontos para atender suas demandas de fabricação e distribuição de peças. Utilize nossos canais de atendimento ou venha nos visitar.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                            <div class="bg-brand-primary/10 p-3 rounded-full flex-shrink-0">
+                                <i class="ph-fill ph-whatsapp-logo text-2xl text-[#25D366]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg mb-1">WhatsApp / Telefone</h4>
+                                <a href="https://wa.me/5511980564160?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20DuraKit." target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-[#25D366] text-lg transition-colors">(11) 98056-4160</a>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                            <div class="bg-brand-primary/10 p-3 rounded-full flex-shrink-0">
+                                <i class="ph-fill ph-envelope-simple text-2xl text-brand-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg mb-1">E-mail</h4>
+                                <a href="mailto:andreza.maraujo@terra.com.br" class="text-slate-600 hover:text-brand-primary transition-colors">andreza.maraujo@terra.com.br</a>
+                            </div>
+                        </div
